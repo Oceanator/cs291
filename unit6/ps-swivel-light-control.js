@@ -18,7 +18,7 @@ function fillScene() {
 
 	light = new THREE.DirectionalLight( 0xFFFFFF, 1.5 );
 	light.position.set( 1, 1, 0 );
-
+	
 	scene.add( light );
 
 	// MATERIALS
@@ -255,6 +255,8 @@ function animate() {
 function render() {
 	var delta = clock.getDelta();
 	cameraControls.update(delta);
+	light.position.x = Math.cos(effectController.angle * Math.PI/180);
+	light.position.z = Math.sin(effectController.angle * Math.PI/180);
 	renderer.render(scene, camera);
 }
 
